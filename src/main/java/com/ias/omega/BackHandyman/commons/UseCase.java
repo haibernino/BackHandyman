@@ -1,4 +1,5 @@
 package com.ias.omega.BackHandyman.commons;
 
-public class UseCase {
+public interface UseCase<Input,Output> {
+    Output execute(Input input);
 }

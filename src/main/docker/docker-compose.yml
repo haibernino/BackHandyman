@@ -1,0 +1,27 @@
+# Use postgres/example user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3307:3307"
+    environment:
+      MYSQL_PASSWORD: admin
+      MYSQL_USER: admin
+      MYSQL_DATABASE: register_services
+    volumes:
+      - vol_mysql:/var/lib/mysql/
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    tty: true
+    ports:
+      - 8083:8080
+
+volumes:
+  vol_mysql:
