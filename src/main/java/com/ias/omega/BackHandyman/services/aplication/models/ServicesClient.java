@@ -1,9 +1,6 @@
 package com.ias.omega.BackHandyman.services.aplication.models;
 
 import com.ias.omega.BackHandyman.services.aplication.domain.valueObjs.*;
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.*;
 
 @Entity
