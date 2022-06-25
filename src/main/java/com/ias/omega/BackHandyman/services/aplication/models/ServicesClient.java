@@ -1,32 +1,53 @@
 package com.ias.omega.BackHandyman.services.aplication.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ias.omega.BackHandyman.services.aplication.domain.valueObjs.*;
+import com.ias.omega.BackHandyman.servicesdetail.aplication.models.ServicesDetail;
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="services")
 
 public class ServicesClient {
 
-    @EmbeddedId
-    private IdService idService;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long idService;
 
-    @Embedded
-    private TypeService typeService;
+    @Column(name = "service_type")
+    private String typeService;
 
-    @Embedded
-    private JourneyTypeService journeyTypeService;
+    @Column(name = "journey_type")
+    private String journeyTypeService;
 
-    @Embedded
-    private AddressService addressService;
+    @Column(name = "address")
+    private String addressService;
 
-    @Embedded
-    private UserService userService;
+    @Column(name = "user")
+    private Integer userService;
 
-    public ServicesClient() {
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "servicesClient", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ServicesDetail> servicesDet = new HashSet<>();
+
+    public Set<ServicesDetail> getServicesDet() {
+        return servicesDet;
     }
 
-    public ServicesClient(IdService idService, TypeService typeService, JourneyTypeService journeyTypeService, AddressService addressService, UserService userService) {
+    public void setServicesDet(Set<ServicesDetail> servicesDet) {
+        this.servicesDet = servicesDet;
+    }
+
+    public ServicesClient() {}
+
+    public ServicesClient(Long idService, String typeService, String journeyTypeService, String addressService, Integer userService) {
         this.idService = idService;
         this.typeService = typeService;
         this.journeyTypeService = journeyTypeService;
@@ -34,44 +55,43 @@ public class ServicesClient {
         this.userService = userService;
     }
 
-    public IdService getIdService() {
+    public Long getIdService() {
         return idService;
     }
 
-    public void setIdService(IdService idService) {
+    public void setIdService(Long idService) {
         this.idService = idService;
     }
 
-    public TypeService getTypeService() {
+    public String getTypeService() {
         return typeService;
     }
 
-    public void setTypeService(TypeService typeService) {
+    public void setTypeService(String typeService) {
         this.typeService = typeService;
     }
 
-    public JourneyTypeService getJourneyTypeService() {
+    public String getJourneyTypeService() {
         return journeyTypeService;
     }
 
-    public void setJourneyTypeService(JourneyTypeService journeyTypeService) {
+    public void setJourneyTypeService(String journeyTypeService) {
         this.journeyTypeService = journeyTypeService;
     }
 
-    public AddressService getAddressService() {
+    public String getAddressService() {
         return addressService;
     }
 
-    public void setAddressService(AddressService addressService) {
+    public void setAddressService(String addressService) {
         this.addressService = addressService;
     }
 
-    public UserService getUserService() {
+    public Integer getUserService() {
         return userService;
     }
 
-    public void setUserService(UserService userService) {
+    public void setUserService(Integer userService) {
         this.userService = userService;
     }
-
 }

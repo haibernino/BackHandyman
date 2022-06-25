@@ -1,38 +1,39 @@
 package com.ias.omega.BackHandyman.infrastructure.adapters.output;
 
-import com.ias.omega.BackHandyman.services.aplication.models.ServicesClient;
-import com.ias.omega.BackHandyman.services.aplication.ports.output.ServicesRespository;
+import com.ias.omega.BackHandyman.servicesdetail.aplication.models.ServicesDetail;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.FluentQuery;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
 
-public class ServiceClientRepository implements JpaRepository<ServicesClient,Long> {
 
+@Repository
+public class ServiceDetailsRepository implements JpaRepository<ServicesDetail,Long> {
 
     @Override
-    public List<ServicesClient> findAll() {
+    public List<ServicesDetail> findAll() {
         return null;
     }
 
     @Override
-    public List<ServicesClient> findAll(Sort sort) {
+    public List<ServicesDetail> findAll(Sort sort) {
         return null;
     }
 
     @Override
-    public Page<ServicesClient> findAll(Pageable pageable) {
+    public Page<ServicesDetail> findAll(Pageable pageable) {
         return null;
     }
 
     @Override
-    public List<ServicesClient> findAllById(Iterable<Long> longs) {
+    public List<ServicesDetail> findAllById(Iterable<Long> longs) {
         return null;
     }
 
@@ -47,7 +48,7 @@ public class ServiceClientRepository implements JpaRepository<ServicesClient,Lon
     }
 
     @Override
-    public void delete(ServicesClient entity) {
+    public void delete(ServicesDetail entity) {
 
     }
 
@@ -57,7 +58,7 @@ public class ServiceClientRepository implements JpaRepository<ServicesClient,Lon
     }
 
     @Override
-    public void deleteAll(Iterable<? extends ServicesClient> entities) {
+    public void deleteAll(Iterable<? extends ServicesDetail> entities) {
 
     }
 
@@ -67,17 +68,17 @@ public class ServiceClientRepository implements JpaRepository<ServicesClient,Lon
     }
 
     @Override
-    public <S extends ServicesClient> S save(S entity) {
+    public <S extends ServicesDetail> S save(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> List<S> saveAll(Iterable<S> entities) {
+    public <S extends ServicesDetail> List<S> saveAll(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public Optional<ServicesClient> findById(Long aLong) {
+    public Optional<ServicesDetail> findById(Long aLong) {
         return Optional.empty();
     }
 
@@ -92,17 +93,17 @@ public class ServiceClientRepository implements JpaRepository<ServicesClient,Lon
     }
 
     @Override
-    public <S extends ServicesClient> S saveAndFlush(S entity) {
+    public <S extends ServicesDetail> S saveAndFlush(S entity) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> List<S> saveAllAndFlush(Iterable<S> entities) {
+    public <S extends ServicesDetail> List<S> saveAllAndFlush(Iterable<S> entities) {
         return null;
     }
 
     @Override
-    public void deleteAllInBatch(Iterable<ServicesClient> entities) {
+    public void deleteAllInBatch(Iterable<ServicesDetail> entities) {
 
     }
 
@@ -117,52 +118,52 @@ public class ServiceClientRepository implements JpaRepository<ServicesClient,Lon
     }
 
     @Override
-    public ServicesClient getOne(Long aLong) {
+    public ServicesDetail getOne(Long aLong) {
         return null;
     }
 
     @Override
-    public ServicesClient getById(Long aLong) {
+    public ServicesDetail getById(Long aLong) {
         return null;
     }
 
     @Override
-    public ServicesClient getReferenceById(Long aLong) {
+    public ServicesDetail getReferenceById(Long aLong) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> Optional<S> findOne(Example<S> example) {
+    public <S extends ServicesDetail> Optional<S> findOne(Example<S> example) {
         return Optional.empty();
     }
 
     @Override
-    public <S extends ServicesClient> List<S> findAll(Example<S> example) {
+    public <S extends ServicesDetail> List<S> findAll(Example<S> example) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> List<S> findAll(Example<S> example, Sort sort) {
+    public <S extends ServicesDetail> List<S> findAll(Example<S> example, Sort sort) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> Page<S> findAll(Example<S> example, Pageable pageable) {
+    public <S extends ServicesDetail> Page<S> findAll(Example<S> example, Pageable pageable) {
         return null;
     }
 
     @Override
-    public <S extends ServicesClient> long count(Example<S> example) {
+    public <S extends ServicesDetail> long count(Example<S> example) {
         return 0;
     }
 
     @Override
-    public <S extends ServicesClient> boolean exists(Example<S> example) {
+    public <S extends ServicesDetail> boolean exists(Example<S> example) {
         return false;
     }
 
     @Override
-    public <S extends ServicesClient, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
+    public <S extends ServicesDetail, R> R findBy(Example<S> example, Function<FluentQuery.FetchableFluentQuery<S>, R> queryFunction) {
         return null;
     }
 }

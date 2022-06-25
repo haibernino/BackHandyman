@@ -7,14 +7,14 @@ import com.ias.omega.BackHandyman.technicals.aplication.models.Technicals;
 
 public class TechnicalDTO {
 
-    private Long idTechnical;
+    private String idTechnical;
     private String nameTechnical;
     private String typeDocumentTechnical;
 
     public TechnicalDTO() {
     }
 
-    public TechnicalDTO(Long idTechnical, String nameTechnical, String typeDocumentTechnical) {
+    public TechnicalDTO(String idTechnical, String nameTechnical, String typeDocumentTechnical) {
         this.idTechnical = idTechnical;
         this.nameTechnical = nameTechnical;
         this.typeDocumentTechnical = typeDocumentTechnical;
@@ -46,11 +46,11 @@ public class TechnicalDTO {
                 );
     }
 
-    public Long getIdTechnical() {
+    public String getIdTechnical() {
         return idTechnical;
     }
 
-    public void setIdTechnical(Long idTechnical) {
+    public void setIdTechnical(String idTechnical) {
         this.idTechnical = idTechnical;
     }
 

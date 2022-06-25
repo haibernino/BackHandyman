@@ -10,7 +10,7 @@ public class UserService {
 
     public UserService(Integer userService) {
         Validate.notNull(userService,"The User field cannot be empty or null.");
-        Validate.isTrue(userService.toString().length() <= 11,"The maximum User size is 11 characters.");
+        Validate.isTrue(userService.toString().length() < 11,"The maximum User size is 11 characters.");
         this.userService = userService;
     }
 

@@ -1,19 +1,21 @@
 package com.ias.omega.BackHandyman.technicals.aplication.models;
 
+import com.ias.omega.BackHandyman.servicesdetail.aplication.models.ServicesDetail;
 import com.ias.omega.BackHandyman.technicals.aplication.domain.valueObjs.IdTechnical;
 import com.ias.omega.BackHandyman.technicals.aplication.domain.valueObjs.NameTechnical;
 import com.ias.omega.BackHandyman.technicals.aplication.domain.valueObjs.TypeDocumentTechnical;
 
-import javax.persistence.Embedded;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="technicals")
 public class Technicals {
 
-    @EmbeddedId
+
+    @Id
+    @Embedded
     private IdTechnical idTechnical;
 
     @Embedded
@@ -21,6 +23,9 @@ public class Technicals {
 
     @Embedded
     private TypeDocumentTechnical typeDocumentTechnical;
+
+    @OneToMany(mappedBy = "technicals", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<ServicesDetail> servicesDet = new HashSet<>();
 
     public Technicals() {
     }

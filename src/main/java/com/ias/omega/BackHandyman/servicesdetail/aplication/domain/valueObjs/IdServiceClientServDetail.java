@@ -7,16 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
 public class IdServiceClientServDetail {
-    @Column(name="id_service",nullable = false, length = 11)
-    private Number idServiceClientServDetail;
+    @Column(name="id_service", length = 11)
+    private Long idServiceClientServDetail;
 
-    public IdServiceClientServDetail(Number idServiceClientServDetail) {
+    public IdServiceClientServDetail(Long idServiceClientServDetail) {
         Validate.notNull(idServiceClientServDetail,"The id_service field cannot be empty or null.");
         Validate.isTrue(idServiceClientServDetail.toString().length() > 11,"The id_service field cannot be empty or null.");
         this.idServiceClientServDetail = idServiceClientServDetail;
     }
 
-    public Number getIdServiceClientServDetail() {
+    public Long getIdServiceClientServDetail() {
         return idServiceClientServDetail;
     }
 

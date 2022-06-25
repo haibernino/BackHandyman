@@ -6,7 +6,7 @@ import javax.persistence.Column;
 
 public class StatusServDetail {
 
-    @Column(name = "status",columnDefinition = "0", nullable = false)
+    @Column(name="status", columnDefinition = "tinyint(1) default '0'")
     private Number statusServDetail;
 
     public StatusServDetail(Number statusServDetail) {

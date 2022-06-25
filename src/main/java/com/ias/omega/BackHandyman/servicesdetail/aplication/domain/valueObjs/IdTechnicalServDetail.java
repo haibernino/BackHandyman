@@ -6,7 +6,6 @@ import javax.persistence.Column;
 
 public class IdTechnicalServDetail {
 
-    @Column(name="id_technical",nullable = false,length = 10)
     private String idTechnicalServDetail;
 
     public IdTechnicalServDetail(String idTechnicalServDetail) {

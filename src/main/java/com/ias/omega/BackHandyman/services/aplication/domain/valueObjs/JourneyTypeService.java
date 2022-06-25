@@ -10,7 +10,7 @@ public class JourneyTypeService {
 
     public JourneyTypeService(String journeyType) {
         Validate.notNull(journeyType,"The Journey Type field cannot be empty or null.");
-        Validate.isTrue(journeyType.toString().length() <= 20,"The maximum Journey Type size is 11 characters.");
+        Validate.isTrue(journeyType.toString().length() < 20,"The maximum Journey Type size is 11 characters.");
         this.journeyType = journeyType;
     }
 
