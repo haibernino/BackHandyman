@@ -2,6 +2,7 @@ package com.ias.omega.BackHandyman.services.aplication.services;
 
 import com.ias.omega.BackHandyman.infrastructure.exceptions.ResourceNotFoundException;
 import com.ias.omega.BackHandyman.infrastructure.models.services.ServiceDTO;
+import com.ias.omega.BackHandyman.services.aplication.models.ServicesClient;
 import com.ias.omega.BackHandyman.services.aplication.ports.input.QueryByIdUseCase;
 import com.ias.omega.BackHandyman.services.aplication.ports.output.ServicesRespository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,15 +17,14 @@ public class QueryByIdService implements QueryByIdUseCase {
 
     @Override
     public Optional<ServiceDTO> execute(Long idService) {
-         servicesRespository.findById(idService);
-
-         /*if(serviceOptional.isPresent()) {
-             return serviceOptional.map(servic->{
-                 ServiceDTO serviceDTO = ServiceDTO.fromToDomain(servic);
-                 return serviceDTO;
-             });
-         }*/
-         return null;
+        Optional<ServicesClient> response = servicesRespository.queryById(idService);
+        if(response.isPresent()){
+            return response.map(serv->{
+                ServiceDTO serviceDTO = ServiceDTO.fromToDomain(serv);
+                return serviceDTO;
+            });
+        }
+        return null;
     }
 
 }

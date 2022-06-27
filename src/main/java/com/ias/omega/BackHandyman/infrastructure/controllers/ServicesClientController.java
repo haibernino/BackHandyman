@@ -25,26 +25,14 @@ public class ServicesClientController {
     @GetMapping("/services")
     public ResponseEntity<?> getServices(){
         Map<String,Object> response = new HashMap<>();
-        try{
-            response.put("services",queryServicesAll.execute(1L));
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
-        }
-        catch(Exception e){
-            response.put("error",e);
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        response.put("services",queryServicesAll.execute(1L));
+        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
     }
 
     @GetMapping("/services/{idService}")
     public ResponseEntity<?> getServiceById(@PathVariable(value = "idService") Long idService){
         Map<String,Object> response = new HashMap<>();
-        try{
-            response.put("service",queryByIdService.execute(idService));
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
-        }
-        catch(Exception e){
-            response.put("error",e);
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        response.put("service",queryByIdService.execute(idService));
+        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
     }
 }

@@ -13,6 +13,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class QueryServicesAll implements QueryAllUseCase {
+
     @Autowired
     private ModelMapper modelMapper;
 

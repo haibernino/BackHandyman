@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -56,6 +57,16 @@ public class ServicesClient {
         this.journeyTypeService = journeyTypeService;
         this.addressService = addressService;
         this.userService = userService;
+    }
+
+    public static ServicesClient fromResult(Optional<ServicesClient> servicesClient){
+        ServicesClient servicesClientNew = new ServicesClient();
+        servicesClientNew.setIdService(servicesClient.get().getIdService());
+        servicesClientNew.setTypeService(servicesClient.get().getTypeService());
+        servicesClientNew.setJourneyTypeService(servicesClient.get().getJourneyTypeService());
+        servicesClientNew.setAddressService(servicesClient.get().getAddressService());
+        servicesClientNew.setUserService(servicesClient.get().getUserService());
+        return servicesClientNew;
     }
 
     public IdService getIdService() {
