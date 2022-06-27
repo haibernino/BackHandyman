@@ -20,12 +20,12 @@ public class ServiceDetailDTO {
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
     private Date endDateServDetail;
 
-    private Number statusServDetail;
+    private Integer statusServDetail;
 
     public ServiceDetailDTO() {
     }
 
-    public ServiceDetailDTO(Long idServDetail, String idTechnicalServDetail, Long idServiceClientServDetail, Date startDateServDetail, Date endDateServDetail, Number statusServDetail) {
+    public ServiceDetailDTO(Long idServDetail, String idTechnicalServDetail, Long idServiceClientServDetail, Date startDateServDetail, Date endDateServDetail, Integer statusServDetail) {
         this.idServDetail = idServDetail;
         this.idTechnicalServDetail = idTechnicalServDetail;
         this.idServiceClientServDetail = idServiceClientServDetail;
@@ -36,25 +36,24 @@ public class ServiceDetailDTO {
 
     public static ServiceDetailDTO fromToDomain(ServicesDetail serviceDetail){
         ServiceDetailDTO serviceDetailDTO = new ServiceDetailDTO();
-        /*serviceDetailDTO.setIdServDetail(serviceDetail.getIdServDetail().getIdServDetail());
+        serviceDetailDTO.setIdServDetail(serviceDetail.getIdServDetail().getIdServDetail());
         serviceDetailDTO.setIdServiceClientServDetail(serviceDetail.getIdServiceClientServDetail().getIdServiceClientServDetail());
-        /*serviceDetailDTO.setTypeService(service.getTypeService().getValue());
-        serviceDetailDTO.setJourneyTypeService(service.getJourneyTypeService().getValue());
-        serviceDetailDTO.setAddressService(service.getAddressService().getValue());
-        serviceDetailDTO.setUserService(service.getUserService().getValue());*/
+        serviceDetailDTO.setIdTechnicalServDetail(serviceDetail.getIdTechnicalServDetail().getIdTechnicalServDetail());
+        serviceDetailDTO.setStartDateServDetail(serviceDetail.getStartDateServDetail().getStartDateServDetail());
+        serviceDetailDTO.setEndDateServDetail(serviceDetail.getEndDateServDetail().getEndDateServDetail());
+        serviceDetailDTO.setStatusServDetail(serviceDetail.getStatusServDetail().getStatusServDetail());
         return serviceDetailDTO;
     }
 
     public ServicesDetail toUnsaveDomain(){
-        //System.out.println(idTechnicalServDetail+" - "+idServiceClientServDetail);
-        return new ServicesDetail(
-                null,
-                new IdTechnicalServDetail("1152197700"/*idTechnicalServDetail*/),
-                new IdServiceClientServDetail(1L/*idServiceClientServDetail*/),
-                new StartDateServDetail(new Date("2020-01-01 12:00:00")/*startDateServDetail*/),
-                new EndDateServDetail(new Date("2020-01-01 12:00:00")/*endDateServDetail*/),
-                new StatusServDetail(0/*statusServDetail*/)
-        );
+        ServicesDetail servicesDetail = new ServicesDetail();
+        servicesDetail.setIdServDetail(new IdServDetail(null));
+        servicesDetail.setIdTechnicalServDetail(new IdTechnicalServDetail(idTechnicalServDetail));
+        servicesDetail.setIdServiceClientServDetail(new IdServiceClientServDetail(idServiceClientServDetail));
+        servicesDetail.setStartDateServDetail(new StartDateServDetail(startDateServDetail));
+        servicesDetail.setEndDateServDetail(new EndDateServDetail(endDateServDetail));
+        servicesDetail.setStatusServDetail(new StatusServDetail(statusServDetail));
+        return servicesDetail;
     }
 
     public Long getIdServDetail() {
@@ -97,11 +96,23 @@ public class ServiceDetailDTO {
         this.endDateServDetail = endDateServDetail;
     }
 
-    public Number getStatusServDetail() {
+    public Integer getStatusServDetail() {
         return statusServDetail;
     }
 
-    public void setStatusServDetail(Number statusServDetail) {
+    public void setStatusServDetail(Integer statusServDetail) {
         this.statusServDetail = statusServDetail;
+    }
+
+    @Override
+    public String toString() {
+        return "ServiceDetailDTO{" +
+                "idServDetail=" + idServDetail +
+                ", idTechnicalServDetail='" + idTechnicalServDetail + '\'' +
+                ", idServiceClientServDetail=" + idServiceClientServDetail +
+                ", startDateServDetail=" + startDateServDetail +
+                ", endDateServDetail=" + endDateServDetail +
+                ", statusServDetail=" + statusServDetail +
+                '}';
     }
 }

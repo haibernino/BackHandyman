@@ -19,13 +19,7 @@ public class ServiceDetailController {
     @PostMapping
     public ResponseEntity<?> createdServiceDetail(@RequestBody ServiceDetailDTO serviceDetailDTO){
         Map<String,Object> response = new HashMap<>();
-        try{
-            response.put("services",createdServiceDetail.execute(serviceDetailDTO));
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
-        }
-        catch(Exception e){
-            response.put("error",e);
-            return new ResponseEntity<Map<String,Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        response.put("services",createdServiceDetail.execute(serviceDetailDTO));
+        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
     }
 }

@@ -14,23 +14,26 @@ import java.util.Set;
 @Table(name="services")
 
 public class ServicesClient {
+    @AttributeOverrides({
+            @AttributeOverride( name = "idService", column = @Column(name = "id")),
+    })
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long idService;
+    @Embedded
+    private IdService idService;
 
-    @Column(name = "service_type")
-    private String typeService;
+    @Embedded
+    private TypeService typeService;
 
-    @Column(name = "journey_type")
-    private String journeyTypeService;
+    @Embedded
+    private JourneyTypeService journeyTypeService;
 
-    @Column(name = "address")
-    private String addressService;
+    @Embedded
+    private AddressService addressService;
 
-    @Column(name = "user")
-    private Integer userService;
+    @Embedded
+    private UserService userService;
 
 
     @JsonBackReference
@@ -47,7 +50,7 @@ public class ServicesClient {
 
     public ServicesClient() {}
 
-    public ServicesClient(Long idService, String typeService, String journeyTypeService, String addressService, Integer userService) {
+    public ServicesClient(IdService idService, TypeService typeService, JourneyTypeService journeyTypeService, AddressService addressService, UserService userService) {
         this.idService = idService;
         this.typeService = typeService;
         this.journeyTypeService = journeyTypeService;
@@ -55,43 +58,44 @@ public class ServicesClient {
         this.userService = userService;
     }
 
-    public Long getIdService() {
+    public IdService getIdService() {
         return idService;
     }
 
-    public void setIdService(Long idService) {
+    public void setIdService(IdService idService) {
         this.idService = idService;
     }
 
-    public String getTypeService() {
+    public TypeService getTypeService() {
         return typeService;
     }
 
-    public void setTypeService(String typeService) {
+    public void setTypeService(TypeService typeService) {
         this.typeService = typeService;
     }
 
-    public String getJourneyTypeService() {
+    public JourneyTypeService getJourneyTypeService() {
         return journeyTypeService;
     }
 
-    public void setJourneyTypeService(String journeyTypeService) {
+    public void setJourneyTypeService(JourneyTypeService journeyTypeService) {
         this.journeyTypeService = journeyTypeService;
     }
 
-    public String getAddressService() {
+    public AddressService getAddressService() {
         return addressService;
     }
 
-    public void setAddressService(String addressService) {
+    public void setAddressService(AddressService addressService) {
         this.addressService = addressService;
     }
 
-    public Integer getUserService() {
+    public UserService getUserService() {
         return userService;
     }
 
-    public void setUserService(Integer userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
+
 }

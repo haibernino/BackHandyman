@@ -14,13 +14,13 @@ class BackHandymanApplicationTests {
 
 	@Test
 	void contextLoads() {
-		/*ServicesClient servicesClient = new ServicesClient();
+		ServicesClient servicesClient = new ServicesClient();
 		servicesClient.setIdService(new IdService(1L));
 		servicesClient.setTypeService(new TypeService("Repair"));
 		servicesClient.setJourneyTypeService(new JourneyTypeService("Tarde"));
 		servicesClient.setUserService(new UserService(123));
 		System.out.println(servicesClient.getTypeService());
-		Assertions.assertTrue(servicesClient.getIdService().getValue() == 1L);*/
+		Assertions.assertTrue(servicesClient.getIdService().getValue() == 1L);
 	}
 
 }

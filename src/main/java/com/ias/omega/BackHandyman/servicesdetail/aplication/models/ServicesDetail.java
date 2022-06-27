@@ -19,14 +19,8 @@ import java.util.Set;
 @Table(name = "register_service")
 public class ServicesDetail {
 
-    @AttributeOverrides({
-            @AttributeOverride( name = "idServDetail", column = @Column(name = "id")),
-            @AttributeOverride( name="idTechnicalServDetail", column = @Column(name = "id_technical",length = 10))
-    })
-
-    @Id
+    @EmbeddedId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Embedded
     private IdServDetail idServDetail;
 
     @Embedded

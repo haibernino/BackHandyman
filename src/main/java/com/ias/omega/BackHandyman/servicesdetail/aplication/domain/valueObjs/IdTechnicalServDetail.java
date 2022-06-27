@@ -3,14 +3,18 @@ package com.ias.omega.BackHandyman.servicesdetail.aplication.domain.valueObjs;
 import org.apache.commons.lang3.Validate;
 
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
 public class IdTechnicalServDetail {
 
+    @Column(name = "id_technical",length = 10, nullable = false)
     private String idTechnicalServDetail;
 
     public IdTechnicalServDetail(String idTechnicalServDetail) {
-        Validate.notNull(idTechnicalServDetail,"The id_technical field cannot be empty or null.");
-        Validate.isTrue(idTechnicalServDetail.toString().length() > 10,"The id_technical field cannot be empty or null.");
+        String value = idTechnicalServDetail.toString();
+        Validate.notNull(value.toString(),"The id_technical field cannot be empty or null.");
+        Validate.isTrue(value.toString().length() <= 10,"The maximum id_technical size is 10 characters.");
         this.idTechnicalServDetail = idTechnicalServDetail;
     }
 
@@ -23,5 +27,5 @@ public class IdTechnicalServDetail {
         return idTechnicalServDetail.toString();
     }
 
-    private IdTechnicalServDetail() {}
+    public IdTechnicalServDetail() {}
 }

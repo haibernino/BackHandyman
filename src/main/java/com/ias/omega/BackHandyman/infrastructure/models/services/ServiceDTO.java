@@ -1,98 +1,106 @@
 package com.ias.omega.BackHandyman.infrastructure.models.services;
 
+import com.ias.omega.BackHandyman.services.aplication.domain.Services;
 import com.ias.omega.BackHandyman.services.aplication.domain.valueObjs.*;
 import com.ias.omega.BackHandyman.services.aplication.models.ServicesClient;
+import lombok.Getter;
+import lombok.Setter;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServiceDTO {
+    @Autowired
+    private ModelMapper modelMapper;
 
-    private IdService idService;
+    private Long idService;
 
-    private TypeService typeService;
+    private String typeService;
 
-    private JourneyTypeService journeyTypeService;
+    private String journeyTypeService;
 
-    private AddressService addressService;
+    private String addressService;
 
-    private UserService userService;
+    private Integer userService;
+
+
+    public ServiceDTO(Long idService, String typeService, String journeyTypeService, String addressService,Integer userService) {
+        this.idService = idService;
+        this.typeService = typeService;
+        this.journeyTypeService = journeyTypeService;
+        this.addressService = addressService;
+        this.userService = userService;
+    }
 
     public ServiceDTO() {
     }
 
-    public ServiceDTO(IdService idService, TypeService typeService, JourneyTypeService journeyTypeService, AddressService addressService, UserService userService) {
-        this.idService = idService;
-        this.typeService = typeService;
-        this.journeyTypeService = journeyTypeService;
-        this.addressService = addressService;
-        this.userService = userService;
-    }
-
     public ServicesClient toDomain(){
-        ServicesClient servicesClient = new ServicesClient();
-        servicesClient.setIdService(idService.getValue());
-        servicesClient.setTypeService(typeService.getValue());
-        servicesClient.setJourneyTypeService(journeyTypeService.getValue());
-        servicesClient.setAddressService(addressService.getValue());
-        servicesClient.setUserService(userService.getValue());
-        return servicesClient;
-    }
-
-    public ServicesClient withoutSaveDomain(){
-        ServicesClient servicesClient = new ServicesClient();
-        servicesClient.setIdService(0L);
-        servicesClient.setTypeService(typeService.getValue());
-        servicesClient.setJourneyTypeService(journeyTypeService.getValue());
-        servicesClient.setAddressService(addressService.getValue());
-        servicesClient.setUserService(userService.getValue());
-        return servicesClient;
+        return  new ServicesClient(
+                new IdService(idService),
+                new TypeService(typeService),
+                new JourneyTypeService(journeyTypeService),
+                new AddressService(addressService),
+                new UserService(userService)
+        );
     }
 
     public static ServiceDTO fromToDomain(ServicesClient service){
+        //System.out.println(service.getIdService());
         ServiceDTO serviceDTO = new ServiceDTO();
-        serviceDTO.setIdService(new IdService(service.getIdService().longValue()));
-        serviceDTO.setTypeService(new TypeService(service.getTypeService()));
-        serviceDTO.setJourneyTypeService(new JourneyTypeService(service.getJourneyTypeService()));
-        serviceDTO.setAddressService(new AddressService(service.getAddressService()));
-        serviceDTO.setUserService(new UserService(service.getUserService()));
+        serviceDTO.setIdService(service.getIdService().getValue());
+        serviceDTO.setTypeService(service.getTypeService().getValue());
+        serviceDTO.setJourneyTypeService(service.getJourneyTypeService().getValue());
+        serviceDTO.setAddressService(service.getAddressService().getValue());
+        serviceDTO.setUserService(service.getUserService().getValue());
         return serviceDTO;
     }
 
-    public Long getIdService() {
-        return idService.getValue();
-    }
-
-    public void setIdService(IdService idService) {
-        this.idService = idService;
+    public Services toUnsaveDomain(){
+       return new Services(null,
+            new TypeService(typeService),
+            new JourneyTypeService(journeyTypeService),
+            new AddressService(addressService),
+            new UserService(userService)
+       );
     }
 
     public String getTypeService() {
-        return typeService.getValue();
+        return typeService;
     }
 
-    public void setTypeService(TypeService typeService) {
+    public void setTypeService(String typeService) {
         this.typeService = typeService;
     }
 
     public String getJourneyTypeService() {
-        return journeyTypeService.getValue();
+        return journeyTypeService;
     }
 
-    public void setJourneyTypeService(JourneyTypeService journeyTypeService) {
+    public void setJourneyTypeService(String journeyTypeService) {
         this.journeyTypeService = journeyTypeService;
     }
 
     public String getAddressService() {
-        return addressService.getValue();
+        return addressService;
     }
 
-    public void setAddressService(AddressService addressService) {
+    public void setAddressService(String addressService) {
         this.addressService = addressService;
     }
 
     public Integer getUserService() {
-        return userService.getValue();
+        return userService;
     }
 
-    public void setUserService(UserService userService) {
+    public void setUserService(Integer userService) {
         this.userService = userService;
+    }
+
+    public Long getIdService() {
+        return idService;
+    }
+
+    public void setIdService(Long idService) {
+        this.idService = idService;
     }
 }

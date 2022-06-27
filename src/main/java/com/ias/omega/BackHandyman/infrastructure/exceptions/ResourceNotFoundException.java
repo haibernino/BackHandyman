@@ -5,38 +5,38 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException{
 
-    private String nombreDelRecurso;
-    private String nombreDelCampo;
-    private long valorDelCampo;
+    private String resourceName;
+    private String fieldName;
+    private long valueField;
 
-    public ResourceNotFoundException(String nombreDelRecurso, String nombreDelCampo, long valorDelCampo) {
-        super(String.format("%s No encontrado con :  %s : '%s'",nombreDelRecurso,nombreDelCampo,valorDelCampo));
-        this.nombreDelRecurso = nombreDelRecurso;
-        this.nombreDelCampo = nombreDelCampo;
-        this.valorDelCampo = valorDelCampo;
+    public ResourceNotFoundException(String resourceName, String fieldName, long valueField) {
+        super(String.format("%s Not found with :  %s : '%s'",resourceName,fieldName,valueField));
+        this.resourceName = resourceName;
+        this.fieldName = fieldName;
+        this.valueField = valueField;
     }
 
-    public String getNombreDelRecurso() {
-        return nombreDelRecurso;
+    public String getResourceName() {
+        return resourceName;
     }
 
-    public void setNombreDelRecurso(String nombreDelRecurso) {
-        this.nombreDelRecurso = nombreDelRecurso;
+    public void setResourceName(String resourceName) {
+        this.resourceName = resourceName;
     }
 
-    public String getNombreDelCampo() {
-        return nombreDelCampo;
+    public String getFieldName() {
+        return fieldName;
     }
 
-    public void setNombreDelCampo(String nombreDelCampo) {
-        this.nombreDelCampo = nombreDelCampo;
+    public void setFieldName(String fieldName) {
+        this.fieldName = fieldName;
     }
 
-    public long getValorDelCampo() {
-        return valorDelCampo;
+    public long getValueField() {
+        return valueField;
     }
 
-    public void setValorDelCampo(long valorDelCampo) {
-        this.valorDelCampo = valorDelCampo;
+    public void setValueField(long valueField) {
+        this.valueField = valueField;
     }
 }

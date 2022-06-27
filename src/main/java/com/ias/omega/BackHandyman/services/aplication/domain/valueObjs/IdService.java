@@ -5,7 +5,6 @@ import org.apache.commons.lang3.Validate;
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Embeddable
 public class IdService implements Serializable {
 
     private Long idService;
@@ -16,7 +15,7 @@ public class IdService implements Serializable {
         this.idService = idService;
     }
     public Long getValue() {
-        return idService.longValue();
+        return idService;
     }
 
     @Override

@@ -4,13 +4,13 @@ import org.apache.commons.lang3.Validate;
 
 import javax.persistence.*;
 import java.io.Serializable;
-
+@Embeddable
 public class IdServDetail implements Serializable{
-
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idServDetail;
 
     public IdServDetail(Long idServDetail) {
-        Validate.notNull(idServDetail,"The id field cannot be empty or null.");
         this.idServDetail = idServDetail;
     }
 
