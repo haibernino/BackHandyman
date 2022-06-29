@@ -30,12 +30,10 @@ public class TechnicalDTO {
     }
 
     public static TechnicalDTO fromToDomain(Technicals technicals) {
-
         TechnicalDTO technicalDTO = new TechnicalDTO();
         technicalDTO.setIdTechnical(technicals.getIdTechnical().getIdTechnical());
         technicalDTO.setNameTechnical(technicals.getNameTechnical().getNameTechnical());
         technicalDTO.setTypeDocumentTechnical(technicals.getTypeDocumentTechnical().getTypeDocument());
-
         return technicalDTO;
     }
 

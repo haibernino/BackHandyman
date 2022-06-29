@@ -6,5 +6,5 @@ import com.ias.omega.BackHandyman.technicals.aplication.models.Technicals;
 import java.util.List;
 
 public interface QueryAllTechnicals extends UseCase<Long, List<TechnicalDTO>> {
-    //List<Technicals> queryTechnicalsAll();
+
 }

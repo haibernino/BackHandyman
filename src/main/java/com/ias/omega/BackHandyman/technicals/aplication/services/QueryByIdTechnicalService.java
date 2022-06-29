@@ -1,5 +1,6 @@
 package com.ias.omega.BackHandyman.technicals.aplication.services;
 
+import com.ias.omega.BackHandyman.infrastructure.models.technicals.TechnicalDTO;
 import com.ias.omega.BackHandyman.technicals.aplication.models.Technicals;
 import com.ias.omega.BackHandyman.technicals.aplication.ports.input.QueryByIdTechnical;
 import com.ias.omega.BackHandyman.technicals.aplication.ports.output.TechnicalsRepository;
@@ -11,21 +12,14 @@ import java.util.Optional;
 
 
 @Service
-public class QueryByIdTechnicals implements QueryByIdTechnical {
+public class QueryByIdTechnicalService implements QueryByIdTechnical {
 
     @Autowired
     private TechnicalsRepository repository;
 
+
     @Override
-    @Transactional(readOnly = true)
-    public Technicals queryById(Long idTechnicals) {
-        Technicals technicals = null;
-        Optional<Technicals> op = repository.findById(idTechnicals);
-        if (op.isPresent()){
-            return technicals = op.get();
-        }
-        return technicals;
-
+    public TechnicalDTO execute(Long aLong) {
+        return null;
     }
-
 }
