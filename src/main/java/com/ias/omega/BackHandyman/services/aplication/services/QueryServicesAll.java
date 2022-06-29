@@ -13,12 +13,21 @@ import java.util.stream.Collectors;
 
 @Service
 public class QueryServicesAll implements QueryAllUseCase {
+
+    @Autowired
+    private ModelMapper modelMapper;
+
     @Autowired
     private ServicesRespository servicesRespository;
 
     @Override
     public List<ServiceDTO> execute(Long aLong) {
         List<ServicesClient> lisServices = servicesRespository.findAll();
-        return lisServices.stream().map((serv)-> ServiceDTO.fromToDomain(serv)).collect(Collectors.toList());
+        return lisServices.stream().map((serv)-> fromToDomain(serv)).collect(Collectors.toList());
+    }
+
+    public ServiceDTO fromToDomain(ServicesClient service){
+        ServiceDTO serviceDTOConvert = modelMapper.map(service,ServiceDTO.class);
+        return serviceDTOConvert;
     }
 }

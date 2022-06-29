@@ -10,7 +10,7 @@ public class AddressService {
 
     public AddressService(String address) {
         Validate.notNull(address,"The Address field cannot be empty or null.");
-        Validate.isTrue(address.toString().length() <= 50,"The maximum Address size is 50 characters.");
+        Validate.isTrue(address.toString().length() < 50,"The maximum Address size is 50 characters.");
         this.address = address;
     }
 

@@ -5,8 +5,13 @@ import com.ias.omega.BackHandyman.services.aplication.domain.valueObjs.*;
 import com.ias.omega.BackHandyman.services.aplication.models.ServicesClient;
 import lombok.Getter;
 import lombok.Setter;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class ServiceDTO {
+    @Autowired
+    private ModelMapper modelMapper;
+
     private Long idService;
 
     private String typeService;
@@ -29,8 +34,8 @@ public class ServiceDTO {
     public ServiceDTO() {
     }
 
-    public Services toDomain(){
-        return  new Services(
+    public ServicesClient toDomain(){
+        return  new ServicesClient(
                 new IdService(idService),
                 new TypeService(typeService),
                 new JourneyTypeService(journeyTypeService),

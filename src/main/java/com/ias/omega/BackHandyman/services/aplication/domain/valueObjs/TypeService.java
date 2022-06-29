@@ -10,7 +10,7 @@ public class TypeService {
 
     public TypeService(String typeService) {
         Validate.notNull(typeService,"The type service field cannot be empty or null.");
-        Validate.isTrue(typeService.toString().length() > 20,"The maximum type service size is 20 characters.");
+        Validate.isTrue(typeService.toString().length() < 20,"The maximum type service size is 20 characters.");
         this.typeService = typeService;
     }
 
@@ -23,6 +23,6 @@ public class TypeService {
         return typeService.toString();
     }
 
-    protected TypeService() {
+    private TypeService() {
     }
 }
