@@ -12,6 +12,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/api/servicesdetail")
+@CrossOrigin(origins = { "http://localhost:4200" })
 public class ServiceDetailController {
     @Autowired
     private CreatedServiceDetail createdServiceDetail;
