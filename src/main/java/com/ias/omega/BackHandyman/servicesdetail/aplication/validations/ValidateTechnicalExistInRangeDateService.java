@@ -20,6 +20,7 @@ public class ValidateTechnicalExistInRangeDateService{
 
     public Boolean execute(String idTechnical,Date startDate,Date endDate) {
         List<ServicesDetail> validTechnicalExistenceInDates = serviceDetailRepository.queryAllServicesByTechinicalAndDate(idTechnical, startDate, endDate);
+        System.out.println(validTechnicalExistenceInDates.isEmpty());
         return !validTechnicalExistenceInDates.isEmpty() ? false : true;
     }
 }

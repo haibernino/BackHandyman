@@ -1,5 +1,6 @@
 package com.ias.omega.BackHandyman.infrastructure.controllers;
 
+import com.ias.omega.BackHandyman.infrastructure.models.services.ServiceDTO;
 import com.ias.omega.BackHandyman.services.aplication.services.QueryByIdService;
 import com.ias.omega.BackHandyman.services.aplication.services.QueryServicesAll;
 import com.ias.omega.BackHandyman.services.aplication.services.QueryServicesByStatusService;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -26,9 +28,8 @@ public class ServicesClientController {
 
     @GetMapping("/services")
     public ResponseEntity<?> getServices(){
-        Map<String,Object> response = new HashMap<>();
-        response.put("services",queryServicesAll.execute(1L));
-        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
+        List<ServiceDTO> responseData = queryServicesAll.execute(1L);
+        return new ResponseEntity<>(responseData, HttpStatus.OK);
     }
 
     @GetMapping("/services/{idService}")
@@ -40,8 +41,6 @@ public class ServicesClientController {
 
     @GetMapping("/services/status/{state}")
     public ResponseEntity<?> getServiceByStatus(@PathVariable(value = "state") Integer state){
-        Map<String,Object> response = new HashMap<>();
-        response.put("services", queryServicesByStatus.execute(state));
-        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
+        return new ResponseEntity<>(queryServicesByStatus.execute(state), HttpStatus.OK);
     }
 }

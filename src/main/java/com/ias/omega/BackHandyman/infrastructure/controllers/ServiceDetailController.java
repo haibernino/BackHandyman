@@ -19,8 +19,6 @@ public class ServiceDetailController {
 
     @PostMapping
     public ResponseEntity<?> createdServiceDetail(@RequestBody ServiceDetailDTO serviceDetailDTO){
-        Map<String,Object> response = new HashMap<>();
-        response.put("services",createdServiceDetail.execute(serviceDetailDTO));
-        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
+        return new ResponseEntity<>(createdServiceDetail.execute(serviceDetailDTO), HttpStatus.OK);
     }
 }
