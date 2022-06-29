@@ -27,9 +27,7 @@ public class TechnicalsController {
 
     @GetMapping("/technicals")
     public ResponseEntity<?> getTechnicals(){
-        Map<String,Object> response = new HashMap<>();
-        response.put("technicals",queryTechnicalsAllService.execute(0L));
-        return new ResponseEntity<Map<String,Object>>(response, HttpStatus.OK);
+        return new ResponseEntity<>(queryTechnicalsAllService.execute(0L), HttpStatus.OK);
     }
 
 }
